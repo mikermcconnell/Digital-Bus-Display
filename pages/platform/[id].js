@@ -44,7 +44,7 @@ export default function PlatformSign() {
     <div className={styles.container}>
       {/* Service Alert Banner */}
       <div className={styles.alertBanner}>
-        <span className={styles.alertText}>Terminal Changes coming September 21st</span>
+        <span className={styles.alertText}>⚠ Terminal Changes Coming September 21st ⚠</span>
       </div>
 
       {/* Main Content Area */}
@@ -69,7 +69,7 @@ export default function PlatformSign() {
                   style={{
                     backgroundColor: bus.color || '#808080',
                     color: bus.color === '#000000' || bus.color === '#C2185B' || bus.color === '#8B0000' ? '#FFFFFF' :
-                           bus.color === '#FFD700' ? '#000000' : '#FFFFFF',
+                           bus.color === '#FFD700' || bus.color === '#4FC3F7' ? '#000000' : '#FFFFFF',
                     border: bus.color === '#4FC3F7' ? '1px solid #FFFFFF' : 'none'
                   }}
                 >
