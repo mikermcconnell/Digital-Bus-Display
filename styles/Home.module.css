@@ -106,6 +106,21 @@
   border-bottom: none;
 }
 
+.backLink {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgb(0, 86, 128);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.backLink:hover {
+  background: rgb(0, 106, 148);
+}
+
 @media (max-width: 600px) {
   .title {
     font-size: 2rem;

@@ -1,11 +1,12 @@
-# Barrie Transit Platform Signs
+# Barrie Transit Digital Platform Signs
 
 ## Project Overview
-Digital platform sign system for Barrie Transit displaying bus routes, platform numbers, and service alerts. Designed for 320x80px digital signage displays with 14 platform-specific pages.
+Digital platform sign system for Barrie Transit terminals displaying bus routes, platform numbers, and service alerts. Designed for 320x80px digital signage displays with nested organization by terminal location.
 
 ## Key Features
 - **Display Size**: Optimized for 320x80px landscape displays
-- **14 Platform Routes**: Accessible via `/platform/1` through `/platform/14`
+- **Multi-Terminal Support**: Downtown Terminal (Platforms 13 & 14) and Allandale Transit Terminal (Platforms 1-14)
+- **Nested Routing**: Location-based URL structure for easy management
 - **Real-time Clock**: Updates every second
 - **Service Alert Banner**: Scrolling announcement for terminal changes
 - **Route Colors**: Visual route identification with official Barrie Transit colors
@@ -30,31 +31,43 @@ npm run lint       # Run linting
 ```
 Platform Signs/
 ├── pages/
-│   ├── index.js              # Home page with platform selector
-│   ├── platform/[id].js      # Dynamic platform display
-│   ├── _app.js              # Next.js app wrapper
-│   └── _document.js         # Document configuration
+│   ├── index.js                      # Home page with terminal selector
+│   ├── downtown/
+│   │   ├── index.js                  # Downtown terminal platform list
+│   │   └── platform/[id].js          # Downtown platform displays (13-14)
+│   ├── allandale/
+│   │   ├── index.js                  # Allandale terminal platform list
+│   │   └── platform/[id].js          # Allandale platform displays (1-14)
+│   ├── platform/[id].js              # Legacy platform routing
+│   ├── _app.js                       # Next.js app wrapper
+│   └── _document.js                  # Document configuration
 ├── data/
-│   └── busRoutes.js         # Bus route data with colors
+│   └── busRoutes.js                  # Bus route data organized by terminal
 ├── styles/
-│   ├── globals.css          # Global styles
-│   ├── Platform.module.css  # Platform display styles
-│   └── Home.module.css      # Home page styles
-├── public/                  # Static assets
-├── package.json             # Dependencies
-├── next.config.js           # Next.js configuration
-└── vercel.json             # Vercel deployment config
+│   ├── globals.css                   # Global styles
+│   ├── Platform.module.css           # Platform display styles
+│   └── Home.module.css              # Home and terminal page styles
+├── public/                           # Static assets
+├── package.json                      # Dependencies
+├── next.config.js                    # Next.js configuration
+└── vercel.json                      # Vercel deployment config
 ```
 
-## Platform Routes Data
+## Terminal Locations
 
-### Platform 13
-- Route 101: Blue (Light blue #4FC3F7 with white border)
+### Downtown Terminal
+**Platforms:** 13 & 14
+
+#### Platform 13
+- Route 101: Blue (Light blue #4FC3F7 with black text and white border)
 - Route 12B: Park Place (Dark pink #C2185B)
 
-### Platform 14
+#### Platform 14
 - Route 100: Red (Dark red #8B0000)
 - Route 12A: Georgian Mall (Dark pink #C2185B)
+
+### Allandale Transit Terminal
+**Platforms:** 1-14 (Full transit hub with all Barrie Transit routes)
 
 ## Route Color Scheme
 - Yellow: #FFD700 (Routes 1, 1A, 11)
@@ -96,15 +109,31 @@ npx vercel
 ```
 Or connect GitHub repository to Vercel for automatic deployments.
 
-## URLs
-- Home: `/`
-- Platform 1-14: `/platform/[1-14]`
-- Example: `/platform/13` shows Platform 13 with routes 101 (Blue) and 12B (Park Place)
+## URL Structure
+
+### Main Navigation
+- **Home**: `/` - Terminal selection page
+- **Downtown Terminal**: `/downtown` - Platform selection for Downtown
+- **Allandale Terminal**: `/allandale` - Platform selection for Allandale
+
+### Platform Displays
+#### Downtown Terminal
+- Platform 13: `/downtown/platform/13` - Routes 101 (Blue) and 12B (Park Place)
+- Platform 14: `/downtown/platform/14` - Routes 100 (Red) and 12A (Georgian Mall)
+
+#### Allandale Transit Terminal
+- Platform 1: `/allandale/platform/1` - Multiple routes with full color coding
+- Platform 2: `/allandale/platform/2` - Multiple routes with full color coding
+- ... (Platforms 3-14 follow same pattern)
+
+#### Legacy URLs (Still supported)
+- `/platform/13` - Redirects to Downtown Platform 13
+- `/platform/14` - Redirects to Downtown Platform 14
 
 ## Design Specifications
 - Font: Inter (400, 600, 700, 900 weights)
 - Primary Color: Barrie Blue RGB(0, 86, 128)
-- Alert Color: Orange #ff6b00
+- Alert Color: Black #000000 with white text
 - High contrast white text on blue background
 - Compact layout optimized for small displays
 - Bold route numbers for visibility

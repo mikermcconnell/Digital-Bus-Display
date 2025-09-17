@@ -2,30 +2,33 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
-  const platforms = Array.from({ length: 14 }, (_, i) => i + 1);
-
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Barrie Transit Platform Signs
+          Barrie Transit Digital Platform Signs
         </h1>
 
         <p className={styles.description}>
-          Digital signage system for platform displays (320x80px)
+          Select a terminal location to view platform displays (320x80px)
         </p>
 
         <div className={styles.grid}>
-          {platforms.map((platform) => (
-            <Link
-              href={`/platform/${platform}`}
-              key={platform}
-              className={styles.card}
-            >
-              <h2>Platform {platform}</h2>
-              <p>View display</p>
-            </Link>
-          ))}
+          <Link
+            href="/downtown"
+            className={styles.card}
+          >
+            <h2>Downtown Terminal</h2>
+            <p>Platforms 13 & 14</p>
+          </Link>
+
+          <Link
+            href="/allandale"
+            className={styles.card}
+          >
+            <h2>Allandale Transit Terminal</h2>
+            <p>Platforms 1-14</p>
+          </Link>
         </div>
 
         <div className={styles.info}>
