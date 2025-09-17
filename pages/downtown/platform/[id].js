@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import busRoutes from '../../data/busRoutes';
-import styles from '../../styles/Platform.module.css';
+import busRoutes from '../../../data/busRoutes';
+import styles from '../../../styles/Platform.module.css';
 
-export default function PlatformSign() {
+export default function DowntownPlatformSign() {
   const router = useRouter();
   const { id } = router.query;
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -18,7 +18,7 @@ export default function PlatformSign() {
     return () => clearInterval(timer);
   }, []);
 
-  // Validate platform ID
+  // Validate platform ID for Downtown Terminal
   const platformId = parseInt(id);
   if (!mounted) {
     return null; // Avoid hydration mismatch
@@ -27,12 +27,12 @@ export default function PlatformSign() {
   if (!id || isNaN(platformId) || (platformId !== 13 && platformId !== 14)) {
     return (
       <div className={styles.container}>
-        <div className={styles.errorMessage}>Platform 13 or 14 Only</div>
+        <div className={styles.errorMessage}>Downtown Platform 13 or 14 Only</div>
       </div>
     );
   }
 
-  const routes = busRoutes[platformId] || [];
+  const routes = busRoutes.downtown[platformId] || [];
   const timeString = currentTime.toLocaleTimeString('en-US', {
     hour: 'numeric',
     minute: '2-digit',
@@ -81,9 +81,14 @@ export default function PlatformSign() {
           </div>
         </div>
 
-        {/* Clock */}
-        <div className={styles.clockSection}>
+        {/* Clock & Logo */}
+        <div className={styles.clockLogoSection}>
           <div className={styles.time}>{timeString}</div>
+          <img
+            src="/barrie-transit-logo.jpg"
+            alt="Barrie Transit"
+            className={styles.logo}
+          />
         </div>
       </div>
     </div>

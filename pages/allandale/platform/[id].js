@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import busRoutes from '../../data/busRoutes';
-import styles from '../../styles/Platform.module.css';
+import busRoutes from '../../../data/busRoutes';
+import styles from '../../../styles/Platform.module.css';
 
-export default function PlatformSign() {
+export default function AllandalePlatformSign() {
   const router = useRouter();
   const { id } = router.query;
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -18,21 +18,21 @@ export default function PlatformSign() {
     return () => clearInterval(timer);
   }, []);
 
-  // Validate platform ID
+  // Validate platform ID for Allandale Terminal
   const platformId = parseInt(id);
   if (!mounted) {
     return null; // Avoid hydration mismatch
   }
 
-  if (!id || isNaN(platformId) || (platformId !== 13 && platformId !== 14)) {
+  if (!id || isNaN(platformId) || platformId < 1 || platformId > 14) {
     return (
       <div className={styles.container}>
-        <div className={styles.errorMessage}>Platform 13 or 14 Only</div>
+        <div className={styles.errorMessage}>Allandale Platform 1-14 Only</div>
       </div>
     );
   }
 
-  const routes = busRoutes[platformId] || [];
+  const routes = busRoutes.allandale[platformId] || [];
   const timeString = currentTime.toLocaleTimeString('en-US', {
     hour: 'numeric',
     minute: '2-digit',

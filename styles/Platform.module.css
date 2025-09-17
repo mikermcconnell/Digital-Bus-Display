@@ -14,21 +14,23 @@
 /* Service Alert Banner - 12px height */
 .alertBanner {
   height: 12px;
-  background: #000000;
+  background: linear-gradient(90deg, #000000 0%, #1a1a1a 50%, #000000 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .alertText {
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
+  color: #ffff00;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
   white-space: nowrap;
-  animation: scroll 20s linear infinite;
+  animation: scroll 25s linear infinite;
+  text-shadow: 0 0 3px rgba(255, 255, 0, 0.3);
 }
 
 @keyframes scroll {
@@ -43,11 +45,16 @@
 /* Main Content Area - 68px height */
 .mainContent {
   height: 68px;
-  background: rgb(0, 86, 128);
+  background: linear-gradient(135deg,
+    rgb(0, 86, 128) 0%,
+    rgb(0, 96, 138) 50%,
+    rgb(0, 86, 128) 100%
+  );
   display: flex;
   align-items: center;
-  padding: 0 4px;
-  gap: 4px;
+  padding: 0 3px;
+  gap: 3px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Platform Section */
@@ -56,34 +63,42 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 55px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  padding: 4px;
+  min-width: 50px;
+  height: 62px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .platformLabel {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin-bottom: 2px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: 1px;
+  text-transform: uppercase;
 }
 
 .platformNumber {
   color: #ffffff;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 900;
-  line-height: 1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 0.9;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
 
 /* Divider */
 .divider {
-  width: 1px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.2);
+  width: 2px;
+  height: 54px;
+  background: linear-gradient(to bottom,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  border-radius: 1px;
   flex-shrink: 0;
 }
 
@@ -93,52 +108,62 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4px 0;
+  padding: 2px 0;
   height: 60px;
   overflow: hidden;
+  min-width: 0;
 }
 
 .routesHeader {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-bottom: 3px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  margin-bottom: 2px;
+  text-transform: uppercase;
 }
 
 .routesList {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
   overflow: hidden;
+  max-height: 52px;
 }
 
 .routeItem {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 3px;
   white-space: nowrap;
   overflow: hidden;
+  min-height: 20px;
+  max-height: 20px;
 }
 
 .routeNumber {
-  padding: 3px 7px;
+  padding: 1px 4px;
   border-radius: 3px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 900;
-  min-width: 38px;
+  min-width: 28px;
   text-align: center;
   flex-shrink: 0;
   display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .routeDestination {
   color: #ffffff;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 700;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  flex: 1;
+  min-width: 0;
 }
 
 /* Clock Section */
@@ -155,11 +180,41 @@
 
 .time {
   color: #ffffff;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 10px;
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Clock & Logo Section for Downtown */
+.clockLogoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 65px;
+  height: 60px;
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 2px;
+  gap: 4px;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+  max-height: 20px;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+/* Downtown time text - black on white background */
+.clockLogoSection .time {
+  color: #000000;
+  text-shadow: none;
+  font-size: 9px;
 }
 
 /* Error Message */
